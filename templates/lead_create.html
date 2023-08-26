@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+<div class="max-w-lg mx-auto">
+
+    <div class="py-5 border-b border-gray-200">
+        <a class="hover:text-blue-500" href="/leads">Back</a>
+    </div>
+
+    
+    <hr>
+    <h1>Create New Lead{{lead.first_name}} {{lead.last_name}} </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="flex ml-right text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">Submit</button>
+    </form>
+
+{% endblock content %}

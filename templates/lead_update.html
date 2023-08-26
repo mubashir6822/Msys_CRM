@@ -1,0 +1,33 @@
+{% extends "base.html"%}
+{% block content %}
+<a class="text-gray-500 hover:text-blue-500" href="/leads">Back</a>
+<hr>
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-xl title-font text-gray-700 tracking-widest">Lead</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{lead.first_name}} {{lead.last_name}} </h1>
+        <div class="flex mb-4">
+          <a href="/leads/{{lead.pk}}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Lead Detail</a>
+          <a href="/leads/{{lead.pk}}/update" class="flex-grow text-green-500 border-b-2 border-green-500 py-2 text-lg px-1">Update</a>
+          <a href="/leads/{{lead.pk}}/delete" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Delete</a>
+        </div>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <button type="submit">Submit</button> {% endcomment %}
+        <button type="submit" class="flex ml-right text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">Submit</button>
+        </form>
+    </div>
+  </div>
+</section>
+   <a class="text-gray-500 hover:text-blue-500" href="/leads">Back</a>
+    <hr>
+    <h1>Update Lead : {{lead.first_name}} {{lead.last_name}} </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content %}
